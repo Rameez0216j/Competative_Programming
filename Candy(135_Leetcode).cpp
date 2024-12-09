@@ -107,6 +107,7 @@ int candy(vector<int>& ratings) {
         }
 
         // Calculate the candies for the peak (1 at the peak)
+        // Here inc and dec sequence exclude peak
         totalCandies += (inc * (inc + 1)) / 2 + (dec * (dec + 1)) / 2 + max(inc, dec) + 1;
 
         // Move pointer if it's flat
