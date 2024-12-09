@@ -1,4 +1,4 @@
-// Method 1 
+// Method 1 (if overlapping is allowed)
 /*
 You can count the area of rectangles without overlapping regions and store it in total_area.
 Now find out min_x,min_y, max_x, max_y and then calculate the area_needed=(max_x - min_x)*(max_y - min_y) 
@@ -6,7 +6,7 @@ Now find out min_x,min_y, max_x, max_y and then calculate the area_needed=(max_x
 return total_area==area_needed
 */
 
-// Method 2
+// Method 2 ( Overlapping is also not allowed)
 #include <iostream>
 #include <vector>
 #include <set>
