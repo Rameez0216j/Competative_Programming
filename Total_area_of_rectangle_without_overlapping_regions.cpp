@@ -21,6 +21,7 @@ int rectangleArea(vector<vector<int>>& rectangles) {
 
     // Sort events by x-coordinate
     sort(events.begin(), events.end(), [](const Event& a, const Event& b) {
+// if a.x == b.x sort on a.y2<b.y2 (important) Ex: 2,2,3,3 and 2,4,3,6
         return a.x < b.x;
     });
 
