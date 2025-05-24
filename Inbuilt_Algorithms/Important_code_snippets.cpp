@@ -167,3 +167,34 @@ int main() {
     
     return 0;
 }
+
+
+// int to different base
+/*
+string decimalToBase(const string& decimalStr, int base) {
+    if (base < 2 || base > 36) return ""; // invalid base
+
+    int num = stoi(decimalStr);
+    if (num == 0) return "0";
+
+    const char* digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string result;
+
+    while (num > 0) {
+        int rem = num % base;
+        result = digits[rem] + result;
+        num /= base;
+    }
+    return result;
+}
+
+int main() {
+    cout << decimalToBase("123", 2) << "\n";  // 1111011
+    cout << decimalToBase("123", 8) << "\n";  // 173
+    cout << decimalToBase("123", 10) << "\n"; // 123
+    cout << decimalToBase("123", 16) << "\n"; // 7B
+    cout << decimalToBase("123", 36) << "\n"; // 3F
+
+    return 0;
+}
+*/
