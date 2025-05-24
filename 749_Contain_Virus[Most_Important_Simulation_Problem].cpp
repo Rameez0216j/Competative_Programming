@@ -1,4 +1,29 @@
 // ********************************* My Solution - [Simple Simulation] *********************************
+/*
+    Code:
+    return a.wallsCount < b.wallsCount; ❌ — Wrong / Incorrect
+    return a.neighbours.size() < b.neighbours.size(); ✅ — Right / Correct
+
+    Reason:
+    Consider,
+    vector<vector<int>> isInfected = {
+            {0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {1, 1, 1, 0, 0, 1},
+            {1, 0, 1, 0, 0, 1},
+            {1, 1, 1, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 0}
+        };
+
+        In above example of 11*6 isInfected grid,
+        R1 (circle) ==> wallsCount=9+4=13  neighbours.size()=10
+        R2 (Line) ==> wallsCount=9+2=11  neighbours.size()=11 
+*/
 
 class Regeion{
     public:
@@ -39,18 +64,6 @@ class Solution {
         auto comp=[](Regeion &a,Regeion &b){
             // return a.wallsCount < b.wallsCount; // This is wrong (Find Why ?)
             return a.neighbours.size() < b.neighbours.size(); // This is correct (our motive is to count which is effecting many neighbours cells not the number of walls)
-            // Ex :
-            /*
-               [[1,1,1,0,0,0,0,0,0],
-                [1,0,1,0,0,0,0,0,1],
-                [1,1,1,0,0,0,0,0,1],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0]]
-
-
-                Above example has 2 Regeions 
-                R1 --> A loop 
-            */
         };
         priority_queue<Regeion,vector<Regeion>,decltype(comp)> pq;
 
