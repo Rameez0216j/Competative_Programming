@@ -1,4 +1,4 @@
-// 3302.Find_Minimum_Diameter_After_Merging_Two Trees
+// 3203.Find_Minimum_Diameter_After_Merging_Two Trees
 /*
     This is all you need, and you will solve this question smoothly 😁
 
