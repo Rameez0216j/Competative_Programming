@@ -95,6 +95,9 @@
         "valarray": "cpp",
         "variant": "cpp",
         "queue": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp"
     }
 }
