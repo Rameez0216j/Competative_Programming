@@ -1,0 +1,13 @@
+*.exe
+CSES-Solutions/Additional Problems/*.exe
+CSES-Solutions/Dynamic Programming/*.exe
+CSES-Solutions/Graph Algorithms/*.exe
+CSES-Solutions/Introductory Problems/*.exe
+CSES-Solutions/Mathematics/*.exe
+CSES-Solutions/Range Queries/*.exe
+CSES-Solutions/Sorting and Searching/*.exe
+CSES-Solutions/String Algorithms/*.exe
+CSES-Solutions/Geometry/*.exe
+CSES-Solutions/Advanced Techniques/*.exe
+CSES-Solutions/Tree Algorithms/*.exe
+.vscode/*
