@@ -1,0 +1,18 @@
+I am on a algoritsthms hunft and has decided to go through all CP Algo Pages. I am facing difficulty in understanding the algo as they are mathematically intensive sometimes and I struggle to glare at pseudocode mostly. I want you to provide a very intuitive code with proper naming conventions with all the imporatnt things explained in comments in c++ for the pseudocode i shared with you and provide tips and tricks to me like where this algo can be used and how to recognize that the problem pattern is based on the following algorithm and a list of good quality problems o leetcode with HARD tag. Follow the below style in code 
+
+
+C++ Code : 
+""" 
+/* 
+All important code parts and what they represent. 
+Ex: parent[i] --> represents parent of node i .... 
+*/
+
+/*
+ Proper intuitive code in with better naming convention 
+*/ 
+
+/*
+ Tips and tricks Pattern recognization of the problem 
+*/
+"""
