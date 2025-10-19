@@ -1,0 +1,4 @@
+Segment Trees Lecture : https://www.youtube.com/watch?v=NofRIGE7oWU&t=96s  
+Timestamp to pause ==> 1:19:00 
+
+First read the code from this folder for generic segment trees and then take the remaining lecture
