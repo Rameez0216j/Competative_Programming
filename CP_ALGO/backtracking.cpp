@@ -198,3 +198,90 @@ public:
         return true;
     }
 };
+
+
+
+
+
+
+
+
+
+// Graph coloring 
+/*
+   color[node] --> stores the color assigned to each vertex.
+                   0 means "uncolored"
+                   1..k represent available colors.
+
+   adj[v]       --> adjacency list for the graph.
+   n            --> number of vertices
+   k            --> number of colors we are allowed to use
+*/
+bool isSafe(int node, int chosenColor, vector<vector<int>> &adj, vector<int> &color) {
+    // Check if any neighbor already has this color
+    for (int neighbor : adj[node]) {
+        if (color[neighbor] == chosenColor)
+            return false;
+    }
+    return true;
+}
+
+// Recursive function to color each node
+bool colorGraph(int node, int n, int k, vector<vector<int>> &adj, vector<int> &color) {
+    // Base case: if all nodes are colored, return true
+    if (node == n)
+        return true;
+
+    // Try assigning each color from 1 to k
+    for (int chosenColor = 1; chosenColor <= k; ++chosenColor) {
+        if (isSafe(node, chosenColor, adj, color)) {
+            color[node] = chosenColor;
+
+            // Recur for the next vertex
+            if (colorGraph(node + 1, n, k, adj, color))
+                return true;
+
+            // Backtrack (remove the color if it doesn't lead to a solution)
+            color[node] = 0;
+        }
+    }
+
+    // If no color works, return false
+    return false;
+}
+
+int main() {
+    int n, m, k;
+    cin >> n >> m >> k; // vertices, edges, and number of colors
+
+    vector<vector<int>> adj(n);
+    for (int i = 0; i < m; ++i) {
+        int u, v;
+        cin >> u >> v;
+        // Assuming 0-based indexing
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    vector<int> color(n, 0);
+
+    if (colorGraph(0, n, k, adj, color)) {
+        cout << "Graph can be colored with " << k << " colors:\n";
+        for (int i = 0; i < n; ++i)
+            cout << "Node " << i << " --> Color " << color[i] << "\n";
+    } else {
+        cout << "Graph cannot be colored with " << k << " colors.\n";
+    }
+
+    return 0;
+}
+
+/*
+🧩 Explanation:
+---------------
+1️⃣ Try assigning each of the k colors to node 0.
+2️⃣ For each color, check if no neighbor has that color (isSafe()).
+3️⃣ Move to the next node recursively.
+4️⃣ If at any point no color can be assigned, backtrack.
+5️⃣ When all nodes are colored successfully, graph is k-colorable.
+*/

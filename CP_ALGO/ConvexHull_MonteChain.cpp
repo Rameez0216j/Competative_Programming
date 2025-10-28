@@ -10,6 +10,8 @@ struct Point {
         else return x < P.x;
     }
 
+
+
     // Equality check
     bool operator == (Point P) const {
         return (x == P.x && y == P.y);
