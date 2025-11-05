@@ -46,19 +46,19 @@ struct line {
 
     
     /*  
-    ---------------------------------------------------------------
-    🧠 Concept: Distance of a Point from a Line
-    ---------------------------------------------------------------
-    
-    For a line:
-    a*x + b*y + c = 0
-    
-    and a point:
-    P(x0, y0)
-    
-    The perpendicular (shortest) distance from the point to the line is:
-    
-    distance = |a*x0 + b*y0 + c| / sqrt(a^2 + b^2)
+        ---------------------------------------------------------------
+        🧠 Concept: Distance of a Point from a Line
+        ---------------------------------------------------------------
+        
+        For a line:
+        a*x + b*y + c = 0
+        
+        and a point:
+        P(x0, y0)
+        
+        The perpendicular (shortest) distance from the point to the line is:
+        
+        distance = |a*x0 + b*y0 + c| / sqrt(a^2 + b^2)
     */
    // Signed distance of point 'p' from the line
    double dist(pt p) const {
@@ -122,63 +122,97 @@ bool intersect(pt a, pt b, pt c, pt d, pt& left, pt& right) {
            betw(c.x, d.x, left.x) && betw(c.y, d.y, left.y);
 }
 
+
 /*
-----------------------------------------------------------
-    🧠 MATHEMATICAL INTERPRETATION:
+    📘 Meaning of 'left' and 'right' points:
 
-    Line equation from two points (x1,y1) & (x2,y2):
+    There are two possible types of intersections:
 
-        a = y1 - y2
-        b = x2 - x1
-        c = -a*x1 - b*y1
+    1️⃣ Proper Intersection:
+    - The segments cross at exactly one point.
+    - Both 'left' and 'right' store that single intersection point.
 
-        → a*x + b*y + c = 0
+    2️⃣ Collinear Overlap:
+    - The segments lie on the same line and overlap partially.
+    - 'left' → starting endpoint of the overlap
+    - 'right' → ending endpoint of the overlap
+    - Example:
+        [1----5] and [3----7] → overlap is [3----5]
+        so left = (3,0), right = (5,0)
 
-    Intersection of two lines:
-        m: a1*x + b1*y + c1 = 0
-        n: a2*x + b2*y + c2 = 0
-
-        Determinant form:
-
-        zn = a1*b2 - b1*a2
-        If zn = 0 → parallel or coincident
-
-        Intersection point:
-            x = -det(c1,b1,c2,b2) / zn
-            y = -det(a1,c1,a2,c2) / zn
-
-    Segment condition:
-        Intersection point must lie within both segments’
-        bounding boxes → checked via betw() and intersect_1d().
-
-----------------------------------------------------------
-    ✅ EXAMPLES:
-
-    1. Proper intersection:
-        A(0,0), B(4,4)
-        C(0,4), D(4,0)
-        → Intersect at (2,2)
-
-    2. Collinear overlapping:
-        A(0,0), B(4,4)
-        C(2,2), D(6,6)
-        → Overlap between [2,2] and [4,4]
-
-    3. Parallel non-intersecting:
-        A(0,0), B(4,0)
-        C(0,1), D(4,1)
-        → Parallel, no intersection
-----------------------------------------------------------
+    Hence:
+    - For single-point intersection → left == right
+    - For overlapping segment → [left, right] gives the overlapping region
 */
 
 int main() {
     pt a{0, 0}, b{4, 4}, c{0, 4}, d{4, 0}, left, right;
 
     if (intersect(a, b, c, d, left, right)) {
-        cout << "Segments intersect at: (" << left.x << ", " << left.y << ")\n";
+        cout << "Segments intersect at: (" << left.x << ", " << left.y << ") "<<"till" << " (" << right.x << ", " << right.y << ")\n";
     } else {
         cout << "Segments do not intersect.\n";
     }
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+/*
+    ----------------------------------------------------------
+        🧠 MATHEMATICAL INTERPRETATION:
+
+        Line equation from two points (x1,y1) & (x2,y2):
+
+            a = y1 - y2
+            b = x2 - x1
+            c = -a*x1 - b*y1
+
+            → a*x + b*y + c = 0
+
+        Intersection of two lines:
+            m: a1*x + b1*y + c1 = 0
+            n: a2*x + b2*y + c2 = 0
+
+            Determinant form:
+
+            zn = a1*b2 - b1*a2
+            If zn = 0 → parallel or coincident
+
+            Intersection point:
+                x = -det(c1,b1,c2,b2) / zn
+                y = -det(a1,c1,a2,c2) / zn
+
+        Segment condition:
+            Intersection point must lie within both segments’
+            bounding boxes → checked via betw() and intersect_1d().
+
+    ----------------------------------------------------------
+        ✅ EXAMPLES:
+
+        1. Proper intersection:
+            A(0,0), B(4,4)
+            C(0,4), D(4,0)
+            → Intersect at (2,2)
+
+        2. Collinear overlapping:
+            A(0,0), B(4,4)
+            C(2,2), D(6,6)
+            → Overlap between [2,2] and [4,4]
+
+        3. Parallel non-intersecting:
+            A(0,0), B(4,0)
+            C(0,1), D(4,1)
+            → Parallel, no intersection
+    ----------------------------------------------------------
+*/
+
+
+
